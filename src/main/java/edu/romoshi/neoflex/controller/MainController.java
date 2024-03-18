@@ -1,6 +1,5 @@
 package edu.romoshi.neoflex.controller;
 
-import edu.romoshi.neoflex.entity.Employee;
 import edu.romoshi.neoflex.service.CalculationService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,11 +19,7 @@ public class MainController {
     @GetMapping("/calculate")
     public ResponseEntity<Double> getCalculate(@RequestParam double salary,
                                @RequestParam int days) {
-        Employee employee = Employee.newBuilder()
-                .setAvgSalaryForYear(salary)
-                .setVacationDays(days)
-                .build();
-        double result = calculationService.calculateVocationPay(employee);
+        double result = calculationService.calculateVocationPay(salary, days);
         return ResponseEntity.status(HttpStatus.OK).body(result);
     }
 }
