@@ -1,21 +1,15 @@
 package edu.romoshi.neoflex.service;
 
-import edu.romoshi.neoflex.entity.Employee;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CalculationServiceTest {
 
     @Test
     void calculateVocationPay() {
-        Employee employee = Employee.newBuilder()
-                .setAvgSalaryForYear(360000)
-                .setVacationDays(16)
-                .build();
-
         CalculationService calculation = new CalculationService();
-        double actual = calculation.calculateVocationPay(employee);
+        double actual = calculation.calculateVocationPay(360000, 16);
         assertEquals(16382.24 , actual);
     }
 }
